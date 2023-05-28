@@ -96,7 +96,7 @@ The embedding representation is presented below:
 ![pre_trained_2d](images/3d_fine_tuned_representations.png)
 
 
-# Evaluation:
+##### Evaluation:
 After crafting a mini test set for the model, It is observed that the pre-trained model performed better with an accuracy of 75%, while the
 fine tuned model achieved an accuracy of 50%, not being able to generalize well. This results also indicates the model overfitted on the data,
 to which the best way for improvement is more data.
@@ -108,9 +108,17 @@ Phase 1: [Link](https://github.com/kene111/Medical-Information-Search-Engine/blo
 Phase 2: [Link](https://github.com/kene111/Medical-Information-Search-Engine/blob/main/notebooks/INFORMATION%20RETRIVAL%20LOGIC%20-%20%20PHASE%202.ipynb).
 
 
-Software Development and Productionalization.
+### Software Development and Productionalization.
 
 This section contains details on preparing the Information Retrival System for production. Link to The Code is [here](https://github.com/kene111/Medical-Information-Search-Engine/tree/main/IRS).
+
+The IR System consist of the following sections:
+```db```:
+```pre_trained_storage```"
+```request_handler```:
+```semantic```:
+```utils```:
+```app.py```:
 
 
 
