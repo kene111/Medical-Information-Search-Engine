@@ -128,12 +128,20 @@ The Information Retrival System consist of the following sections:
 
 
 #### REQUEST FORMATS
-The expected request format is:
+An example of the expected request format is:
 ```
 {
   "query": "I need information on minocycline",
   "filters": ["side_effects","generic_name","brand_names","related_drugs"],
   "n_results": 3
+}
+```
+another example:
+```
+{
+  "query": "What do you have on adhd?",
+  "filters": "all",
+  "n_results": 6
 }
 ```
 ##### Request Keys:
