@@ -141,10 +141,18 @@ The expected request format is:
 
 ###### EDGE CASES HANDLED:
 1. When users make enquiries that have no relation to the information on the data store, the system returns:
-   ```Information on this query cannot be found in the data store.```
+   ```
+   {
+    "message": "Information on this query cannot be found in the data store."
+    }
+   ```
    This works by calculating the mean score of the number of results returned. It is observed that queries that do not relate to the        information in datastore returns low scores. Hence, a treshold value is set, anything lower than the threshold value is not returned.
 
 2. When users make requests with the incorrect keys and wrong datatypes for the values, the system returns:
-   ```The request information does not tally with what the system expects, re-check your request data!```
+   ```
+   {
+    "message": "The request information does not tally with what the system expects, re-check your request data!"
+    }
+   ```
    
 #### API URL LINK :
