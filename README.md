@@ -113,12 +113,28 @@ Phase 2: [Link](https://github.com/kene111/Medical-Information-Search-Engine/blo
 This section contains details on preparing the Information Retrival System for production. Link to The Code is [here](https://github.com/kene111/Medical-Information-Search-Engine/tree/main/IRS).
 
 The IR System consist of the following sections:
-```db```:
-```pre_trained_storage```"
-```request_handler```:
-```semantic```:
-```utils```:
-```app.py```:
+1. ```db```: The db folder contains the cleaned datasets in parquet format. Parquet format utilizes high level compression algorithms. Pandas now supports parquet format, hence information can be parsed and filtered through using the pandas framework. The db consist of three files:
+   1. db.parquet : This file contains the main dataset.
+   2. prod_feature_db.parquet: This file contains the dataframe consisting of the drug_frame feature column and drug_name, where drug_name column acts as a foreign key to db.parquet 
+   3. related_db.parquetL This file contains the dataframe consisting og the related_drugs and the related_drugs_url, where related_drugs acts as a foreign key to db.parquet
+2. ```pre_trained_storage```: This folder contains the pickled embeddings and the pre-trained embedding model.
+3. ```request_handler```: This folder contains the module the handles pre-processing and making sure the request data is in a format that can be accessed easily through out the system.
+4. ```semantic```: This folder contains the module that handles the performing semantic search and return n number of results.
+5. ```utils```: This folder contains utility funcitions. The utility functions include:
+    1. data_embedder.py: This module is used to propely clean and embed the query.
+    2. system_security.py: This module makes sure the request data is in the correct format with expected keys and datatypes.
+    3. system_settings.py: This  script contains system configurations.
+    4. system_utils.py: This script contains other utility functions.
+7.  ```app.py```: This script runs the entire process
+
+#### HOW TO RUN THE SYSTEM LOCALLY:
+1. Create the necesarry virtual environment.
+2. change directory to the IRS FOLDER:
+  ```cd IRS```
+3. Install the dependecies from the requirements.txt file:
+   ```pip install -r requirements.txt```
+4. Activate the system by running:
+   ```python app.py```
 
 
 
