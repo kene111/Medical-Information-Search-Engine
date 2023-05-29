@@ -9,7 +9,7 @@ from request_handler.req_handler import RequestHandler
 from utils.system_security import RequestSecurityChecks
 
 app = Flask(__name__)
-env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
+env_config = os.getenv("PROD_APP_SETTINGS", "deploy_config.DevelopmentConfig")
 app.config.from_object(env_config)
 
 
