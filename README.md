@@ -28,7 +28,7 @@ The dataset consist of a total of 999 rows, and 17 columns to which before prepr
 The first step was to understand the contents of each of the columns in the dataset in order to know how best to represent them and tranform them, if needed.
 
 From this procedure, I identified the ```activity``` and the ```related drugs``` columns needed to be restructured. The related drugs column
-contains the name of the other drugs relating to a specific drug, and their respective urls. Trasnforming this column entained seperating this feature into two different features. The actitivity column contained numerical percentages, idealy making it a float value, but because it contain percent sign, it was represented as a string. After re-representing it in the ideal format. I made sure the dataframe conformed to the accurate datatype format.
+contains the name of the other drugs relating to a specific drug, and their respective urls. Trasnforming this column entained seperating this feature into two different features. The actitivity column contained numerical percentages, ideally making it a float value, but because it contained a percentage sign, it was represented as a string. After re-representing it in the ideal format. I made sure the dataframe conformed to the accurate datatype format.
 
 #### Correct dataype representation.
 ![datatypes](images/datatypes.png)
