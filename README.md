@@ -43,9 +43,9 @@ would require a certain of level medical expertise. Hence, the best approach to 
 indicates the value is missing.
 
 #### Feature Engineering:
-##### This phase consist of two sections. 
-1. Using the embedding layer of a pre-trained model as is.
-2. Fine-tuning the emedding layer to the dataset making it domain specific.
+##### This section consists of two phase. 
+1. ```Phase 1```: Using the embedding layer of a pre-trained model as is.
+2. ```Phase 2```: Fine-tuning the emedding layer to the dataset making it domain specific.
 
 ##### The Intuition:
 The idea behind the system is, professionals can query the the datastore on drugs information, hence the semantic algorithm should be able to 
