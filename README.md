@@ -28,7 +28,7 @@ The dataset consist of a total of 999 rows, and 17 columns to which before prepr
 The first step was to understand the contents of each of the columns in the dataset in order to know how best to represent them and tranform them, if needed.
 
 From this procedure, I identified the ```activity``` and the ```related drugs``` columns needed to be restructured. The related drugs column
-contains the name of the other drugs relating to a specific drug, and their respective urls. Trasnforming this column entained seperating this feature into two different features. The actitivity column contained numerical percentages, idealy making it a float value, but because it contain percent sign, it was represented as a string. After re-representing it in the ideal format. I made sure the dataframe conformed to the accurate datatype format.
+contains the name of the other drugs relating to a specific drug, and their respective urls. Trasnforming this column entained seperating this feature into two different features. The actitivity column contained numerical percentages, ideally making it a float value, but because it contained a percentage sign, it was represented as a string. After re-representing it in the ideal format. I made sure the dataframe conformed to the accurate datatype format.
 
 #### Correct dataype representation.
 ![datatypes](images/datatypes.png)
@@ -63,6 +63,8 @@ The ```multi-qa-MiniLM-L6-cos-v1``` pre-trained model is used to encode the ```d
 The model was trained on 213 million question and answer pairs. After the encoding was done, it creates an embedding equal to the number of feature rows present in the dataset. In this project, the size of the embedding is (999, 384). 
 
 After embedding the features, to retrieve information, the query is embedding using the same process, and the projected into the vector space, the distance between the query vector and sub vector spaces are calculated using ```cosine similarity```, where the n closest results are returned.
+
+More information on the model can be found [here](https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1).
  
 The visualization of the embbedings is presented below:
 
@@ -84,9 +86,9 @@ The embedding representation is presented below:
 ![pre_trained_2d](images/3d_fine_tuned_representations.png)
 
 
-##### Evaluation:
+#### Evaluation:
 After crafting a mini test set for the model, It is observed that the pre-trained model performed better with an accuracy of 75%, while the
-fine tuned model achieved an accuracy of 50%, not being able to generalize well. This results also indicates the model overfitted on the data, to which the best way for improvement is more data.
+fine tuned model achieved an accuracy of 50%, not being able to generalize well due to the little amount of data used. For better results, the embedding layer needs more data to create a richer embedding space for better vector representation.
 
 Due to constraint of the deadline, I went ahead with the pre-trained model without fine-tuning.
 
@@ -126,7 +128,7 @@ The Information Retrival System consist of the following sections:
 
 
 #### REQUEST FORMATS
-The expected request format is:
+An example of the expected request format is:
 ```
 {
   "query": "I need information on minocycline",
@@ -134,17 +136,35 @@ The expected request format is:
   "n_results": 3
 }
 ```
+another example:
+```
+{
+  "query": "What do you have on adhd?",
+  "filters": "all",
+  "n_results": 6
+}
+```
 ##### Request Keys:
 1. The ```query``` key contains an enquiry about a specific drug that can be found in the datastore.
 2. The ```filters``` key contains a list of the specific columns you want information on, if ```filters``` is set to ```"all"```, it returns all the information on that drug.
-3. The ```n_results key``` contains the number of results you want for an enquiry.
+3. The ```n_results``` key contains the number of results you want for an enquiry.
 
+##### The expected filters are:
+```drug_name```, ```medical_condition```, ```side_effects```, ```generic_name```, ```drug_classes```, ```brand_names```, ```activity```, ```rx_otc```, ```pregnancy_category```, ```csa```, ```alcohol```, ```related_drugs```, ```medical_condition_description```, ```rating```, ```no_of_reviews```, ```drug_link```, and ```medical_condition_url```
 ###### EDGE CASES HANDLED:
 1. When users make enquiries that have no relation to the information on the data store, the system returns:
-   ```Information on this query cannot be found in the data store.```
+   ```
+   {
+    "message": "Information on this query cannot be found in the data store."
+    }
+   ```
    This works by calculating the mean score of the number of results returned. It is observed that queries that do not relate to the        information in datastore returns low scores. Hence, a treshold value is set, anything lower than the threshold value is not returned.
 
 2. When users make requests with the incorrect keys and wrong datatypes for the values, the system returns:
-   ```The request information does not tally with what the system expects, re-check your request data!```
+   ```
+   {
+    "message": "The request information does not tally with what the system expects, re-check your request data!"
+    }
+   ```
    
 #### API URL LINK :
