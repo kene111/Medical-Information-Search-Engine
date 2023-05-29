@@ -3,6 +3,7 @@ import re
 import nltk
 import string
 import pickle
+nltk.download('stopwords')
 stopwords_lst = nltk.corpus.stopwords.words('english')
 
 class QueryEmbedder:
