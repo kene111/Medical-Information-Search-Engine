@@ -30,7 +30,7 @@ The dataset consist of a total of 999 rows, and 17 columns to which before prepr
 The first step was to understand the contents of each of the columns in the dataset in order to know how best to represent them and tranform them.
 if needed.
 
-From this procedure, I identified the "activity" and the "related drugs" columns needed to be restructured. The related drugs column
+From this procedure, I identified the ```activity``` and the ```related drugs``` columns needed to be restructured. The related drugs column
 contains the name of the other drugs relating to a specific drug, and their urls. Trasnforming this column entained seperating this into two different
 features. The actitivity column contained percentages, idealy making it a float value, but because it contain percent sign, it was represented
 as a string. After re-representing it in the ideal format. I made sure the dataframe conformed to their respective format.
@@ -54,14 +54,14 @@ condition the drug is used for. An example is, if a user asks about 'isotretinoi
 be referred to as 'Accutane'. The alogrithm should also be able to tell that the drug is used for treating Acne.
 
 ###### Phase 1:
-To achieve this I combined the "drug_name", "drug_classes", "brand_names", "medical_condition", and "related_drugs" columns together forming a single document,
-called "drug_information". When represented in a vector space, you should be able to see that drugs associated with the specific medical conditions will be clustered together. 
+To achieve this I combined the ```drug_name```, ```drug_classes```, ```brand_names```, ```medical_condition```, and ```related_drugs``` columns together forming a single document,
+called ```drug_information```. When represented in a vector space, you should be able to see that drugs associated with the specific medical conditions will be clustered together. 
 These visualizations can be found in the notebooks used in developing the embedding matrix.
 
 
 ###### Phase 2:
-Here, the new column "drug_information" and "medical_condition" column are used for fine tuning. Here the "medical_condition" is used as a label. 
-The "medical_condition" contains 13 unique values which can be looked at as the categories. The [quaterion](https://github.com/qdrant/quaterion) framework is used to update
+Here, the new column ```drug_information``` and ```medical_condition``` column are used for fine tuning. Here the "medical_condition" is used as a label. 
+The "medical_condition" contains 13 unique values which can be looked at as the categories. The [Quaterion](https://github.com/qdrant/quaterion) framework is used to update
 embedding layer of a pre-trained model, making the model a lot more domain specific. 
 
 Refer to the notebook for more information. [Link](https://github.com/kene111/Medical-Information-Search-Engine/blob/main/notebooks/IRS-DATA-PREPROCESSING.ipynb).
@@ -73,10 +73,9 @@ The ```multi-qa-MiniLM-L6-cos-v1``` pre-trained model was used to encode the dru
 The model was trained on 213 million question and answer pairs. After the encoding has been done, it create an embedding equal to the number of 
 feature rows present in the dataset. In this project, the size of the embedding is (999, 384). 
 
-After embedding the features, to retrieve information, the query is embedding using the same process, and the projected into the vector space,
-the distance between the query vector and sub vector spaces are calculated using cosine similarity, where the n closest results are returned.
+After embedding the features, to retrieve information, the query is embedding using the same process, and the projected into the vector space, the distance between the query vector and sub vector spaces are calculated using ```cosine similarity```, where the n closest results are returned.
  
-The visualization of the embbedings is presented below.
+The visualization of the embbedings is presented below:
 
 #### 2D Represention:
 ![pre_trained_2d](images/2d_pre_trained_representations.png)
@@ -115,9 +114,9 @@ This section contains details on preparing the Information Retrival System for p
 The IR System consist of the following sections:
 1. ```db```: The db folder contains the cleaned datasets in parquet format. Parquet format utilizes high level compression algorithms. Pandas now supports parquet format, hence information can be parsed and filtered through using the pandas framework. The db consist of three files:
    1. db.parquet : This file contains the main dataset.
-   2. prod_feature_db.parquet: This file contains the dataframe consisting of the drug_frame feature column and drug_name, where drug_name column acts as a foreign key to db.parquet 
-   3. related_db.parquetL This file contains the dataframe consisting og the related_drugs and the related_drugs_url, where related_drugs acts as a foreign key to db.parquet
-2. ```pre_trained_storage```: This folder contains the pickled embeddings and the pre-trained embedding model.
+   2. prod_feature_db.parquet: This file contains the dataframe consisting of the ```drug_name``` feature column and ```drug_information``` column, where ```drug_name``` column acts as a foreign key to db.parquet 
+   3. related_db.parquetL This file contains the dataframe consisting of the ```related_drugs``` and the ```related_drugs_url``` columns, where ```related_drugs``` acts as a foreign key to db.parquet
+2. ```pre_trained_storage```: This folder contains the pickled file named ```pre-trained_embedder.pkl```, containing learned embeddings and the pre-trained embedding model.
 3. ```request_handler```: This folder contains the module the handles pre-processing and making sure the request data is in a format that can be accessed easily through out the system.
 4. ```semantic```: This folder contains the module that handles the performing semantic search and return n number of results.
 5. ```utils```: This folder contains utility funcitions. The utility functions include:
