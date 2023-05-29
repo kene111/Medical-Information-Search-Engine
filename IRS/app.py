@@ -1,3 +1,4 @@
+import os
 import json
 from db.dbstore import DBStore
 from semantic.logic import SemanticLogic
@@ -7,8 +8,11 @@ from flask import Flask, jsonify, request, Response
 from request_handler.req_handler import RequestHandler
 from utils.system_security import RequestSecurityChecks
 
-
 app = Flask(__name__)
+env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
+app.config.from_object(env_config)
+
+
 @app.route('/drug_system', methods=['POST'])
 def drug_system():
     # Intialize Object classes
