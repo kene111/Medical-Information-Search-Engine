@@ -63,6 +63,8 @@ The ```multi-qa-MiniLM-L6-cos-v1``` pre-trained model is used to encode the ```d
 The model was trained on 213 million question and answer pairs. After the encoding was done, it creates an embedding equal to the number of feature rows present in the dataset. In this project, the size of the embedding is (999, 384). 
 
 After embedding the features, to retrieve information, the query is embedding using the same process, and the projected into the vector space, the distance between the query vector and sub vector spaces are calculated using ```cosine similarity```, where the n closest results are returned.
+
+More information on the model can be found [here](https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1).
  
 The visualization of the embbedings is presented below:
 
