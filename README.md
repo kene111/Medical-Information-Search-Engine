@@ -137,7 +137,7 @@ The expected request format is:
 ##### Request Keys:
 1. The ```query``` key contains an enquiry about a specific drug that can be found in the datastore.
 2. The ```filters``` key contains a list of the specific columns you want information on, if ```filters``` is set to ```"all"```, it returns all the information on that drug.
-3. The ```n_results key``` contains the number of results you want for an enquiry.
+3. The ```n_results``` key contains the number of results you want for an enquiry.
 
 ###### EDGE CASES HANDLED:
 1. When users make enquiries that have no relation to the information on the data store, the system returns:
