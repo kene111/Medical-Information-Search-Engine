@@ -84,9 +84,9 @@ The embedding representation is presented below:
 ![pre_trained_2d](images/3d_fine_tuned_representations.png)
 
 
-##### Evaluation:
+#### Evaluation:
 After crafting a mini test set for the model, It is observed that the pre-trained model performed better with an accuracy of 75%, while the
-fine tuned model achieved an accuracy of 50%, not being able to generalize well. Hence, this indicates the embedding layer needs more data to create a rich embedding space.
+fine tuned model achieved an accuracy of 50%, not being able to generalize well due to the little amount of data used. For better results, the embedding layer needs more data to create a richer embedding space for better vector representation.
 
 Due to constraint of the deadline, I went ahead with the pre-trained model without fine-tuning.
 
