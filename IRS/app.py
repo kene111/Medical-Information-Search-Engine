@@ -8,9 +8,6 @@ from request_handler.req_handler import RequestHandler
 from utils.system_security import RequestSecurityChecks
 
 
-
-
-
 app = Flask(__name__)
 @app.route('/drug_system', methods=['POST'])
 def drug_system():
@@ -28,7 +25,11 @@ def drug_system():
 
     # if the request data does not tally with the expected formats
     if not req_security.run_request_secruity_check():
-        return Response(response=json.dumps(SystemSettings.BAD_REQUEST_DATA_CONFIGURATION), status=200, mimetype='application/json')
+        system_response = {"message":SystemSettings.BAD_REQUEST_DATA_CONFIGURATION}
+        return Response(response=json.dumps(system_response), status=400, mimetype='application/json')
+
+    # return the pass request data, with possible augmentation
+    drug_query_requests = req_security.return_passed_request()
 
     req_handler.set_request(drug_query_requests)
     system_results = req_handler.prepare_request()
@@ -42,7 +43,8 @@ def drug_system():
         return Response(response=json.dumps(SystemSettings.NO_RESPONSE), status=200, mimetype='application/json')
     # Based on testing, when the system gets queries that have nothing to do with drugs in the data store, the probality score is always lower than the defined threshold.
     elif score < SystemSettings.THRESHOLD_SCORE:
-        return Response(response=json.dumps(SystemSettings.LOW_PROBABLITY), status=200, mimetype='application/json') 
+        system_response = {"message":SystemSettings.LOW_PROBABLITY}
+        return Response(response=json.dumps(system_response), status=200, mimetype='application/json') 
 
     user_results = db_manager.extract_drug_information(embedding_results, system_results["filters"])
 
