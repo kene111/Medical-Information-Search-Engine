@@ -9,6 +9,9 @@ class RequestSecurityChecks:
     expected_variable : str
         Holds the expected value of the filter if the dtype is a string.
 
+    activity_tag : str
+        Holds the string value 'activity'.
+
     dtype_expected_security_count : int
         Holds the expected value if all the values of the request data follow the expected format.
 
@@ -24,6 +27,9 @@ class RequestSecurityChecks:
     _check_request_value_dtype
         Checks the data types of the values of the request data.
 
+    _check_activity_filter
+        Renames the activity filter if present.
+
     set_request
         Sets the request data to the class request variable.
 
@@ -34,6 +40,7 @@ class RequestSecurityChecks:
     def __init__(self):
         self.request = None
         self.expected_variable = "all"
+        self.activity_tag = "activity"
         self.dtype_expected_security_count = 3
         self.system_request_keys = set(["query","filters","n_results"])
 
@@ -103,21 +110,33 @@ class RequestSecurityChecks:
             return False
         return True
 
+    def _check_activity_filter(self):
+        """Renames the activity filter if present"""
+        if self.request["filters"] == self.expected_variable:
+            return None
+        else:
+            if self.activity_tag in self.request["filters"]:
+                self.request["filters"] = list(map(lambda x: x.replace(self.activity_tag, "activity(%)"), self.request["filters"]))
+        return None
+
+    def return_passed_request(self):
+        """Returns the passed request data"""
+        return self.request
+
     def run_request_secruity_check(self):
         """Runs the process of performing security checks on the request data.
         
         Parameters
         ----------
 
-        
         Returns
         -------
         bool
             if true the request data is good, else something is wrong with the request data.
         """
-
         if self._check_request_keys():
             if self._check_request_value_dtype():
+                self._check_activity_filter() # checks if the activity filter is present and renames it.
                 return True
         return False
 
