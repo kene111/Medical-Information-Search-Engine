@@ -112,7 +112,7 @@ Phase 2: [Link](https://github.com/kene111/Medical-Information-Search-Engine/blo
 This section contains details on preparing the Information Retrival System for production. Link to The Code is [here](https://github.com/kene111/Medical-Information-Search-Engine/tree/main/IRS).
 
 The IR System consist of the following sections:
-1. ```db```: The db folder contains the cleaned datasets in parquet format. Parquet format utilizes high level compression algorithms. Pandas now supports parquet format, hence information can be parsed and filtered through using the pandas framework. The db consist of three files:
+1. ```db```: The db folder contains the cleaned datasets in parquet format and  module used to interact with the compressed files. Parquet format utilizes high level compression algorithms. Pandas now supports parquet format, hence information can be parsed and filtered through using the pandas framework. The db consist of three files:
    1. db.parquet : This file contains the main dataset.
    2. prod_feature_db.parquet: This file contains the dataframe consisting of the ```drug_name``` feature column and ```drug_information``` column, where ```drug_name``` column acts as a foreign key to db.parquet 
    3. related_db.parquetL This file contains the dataframe consisting of the ```related_drugs``` and the ```related_drugs_url``` columns, where ```related_drugs``` acts as a foreign key to db.parquet
