@@ -149,6 +149,8 @@ another example:
 2. The ```filters``` key contains a list of the specific columns you want information on, if ```filters``` is set to ```"all"```, it returns all the information on that drug.
 3. The ```n_results``` key contains the number of results you want for an enquiry.
 
+##### The expected filters are:
+```drug_name```, ```medical_condition```, ```side_effects```, ```generic_name```, ```drug_classes```, ```brand_names```, ```activity```, ```rx_otc```, ```pregnancy_category```, ```csa```, ```alcohol```, ```related_drugs```, ```medical_condition_description```, ```rating```, ```no_of_reviews```, ```drug_link```, and ```medical_condition_url```
 ###### EDGE CASES HANDLED:
 1. When users make enquiries that have no relation to the information on the data store, the system returns:
    ```
