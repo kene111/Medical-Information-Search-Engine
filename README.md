@@ -86,7 +86,7 @@ The embedding representation is presented below:
 
 ##### Evaluation:
 After crafting a mini test set for the model, It is observed that the pre-trained model performed better with an accuracy of 75%, while the
-fine tuned model achieved an accuracy of 50%, not being able to generalize well. This results also indicates the model overfitted on the data, to which the best way for improvement is more data.
+fine tuned model achieved an accuracy of 50%, not being able to generalize well. Hence, this indicates the embedding layer needs more data to create a rich embedding space.
 
 Due to constraint of the deadline, I went ahead with the pre-trained model without fine-tuning.
 
