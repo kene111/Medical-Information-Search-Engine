@@ -54,7 +54,7 @@ Here, the new column ```drug_information``` and ```medical_condition``` column a
 The "medical_condition" column contains 13 unique values which can be looked at as the categories. The [Quaterion](https://github.com/qdrant/quaterion) framework is used to update
 embedding layer of the pre-trained model, making the model a lot more domain specific. 
 
-Refer to the notebook for more information. [Link](https://github.com/kene111/Medical-Information-Search-Engine/blob/main/notebooks/IRS-DATA-PREPROCESSING.ipynb).
+Refer to the notebook for more information. [Link](https://github.com/kene111/Medical-Information-Search-Engine/blob/main/notebooks/IRS_DATA_PREPROCESSING.ipynb).
 
 
 ### Information Retrival Development and Testing:
