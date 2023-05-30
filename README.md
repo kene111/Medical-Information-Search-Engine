@@ -167,4 +167,10 @@ another example:
     }
    ```
    
-#### API URL LINK :
+#### API URL LINK : 
+
+#### API REQUEST 
+![api_request](images/query_input.png)
+
+#### API RESULT 
+![api_request](images/query_response.png)
