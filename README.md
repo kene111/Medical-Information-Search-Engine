@@ -62,7 +62,7 @@ Refer to the notebook for more information. [Link](https://github.com/kene111/Me
 The ```multi-qa-MiniLM-L6-cos-v1``` pre-trained model is used to encode the ```drug_information``` feautre, creating a learned embedding matrix.
 The model was trained on 213 million question and answer pairs. After the encoding was done, it creates an embedding equal to the number of feature rows present in the dataset. In this project, the size of the embedding is (999, 384). 
 
-After embedding the features, to retrieve information, the query is embedding using the same process, and the projected into the vector space, the distance between the query vector and sub vector spaces are calculated using ```cosine similarity```, where the n closest results are returned.
+After embedding the features, to retrieve information, the query is embedded using the same process, and then projected into the learned vector space, the distance between the query vector and sub vector spaces are calculated using ```cosine similarity```, were the n closest results are returned.
 
 More information on the model can be found [here](https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1).
  
@@ -88,7 +88,7 @@ The embedding representation is presented below:
 
 #### Evaluation:
 After crafting a mini test set for the model, It is observed that the pre-trained model performed better with an accuracy of 75%, while the
-fine tuned model achieved an accuracy of 50%, not being able to generalize well due to the little amount of data used. For better results, the embedding layer needs more data to create a richer embedding space for better vector representation.
+fine tuned model achieved an accuracy of 50%, not being able to generalize well due to the little amount of data used. For better results, the embedding layer needs more high quality data to create a richer embedding space for better vector representation.
 
 Due to constraint of the deadline, I went ahead with the pre-trained model without fine-tuning.
 
@@ -102,15 +102,15 @@ Phase 2: [Link](https://github.com/kene111/Medical-Information-Search-Engine/blo
 This section contains details on preparing the Information Retrival System for production. Link to The Code is [here](https://github.com/kene111/Medical-Information-Search-Engine/tree/main/IRS).
 
 The Information Retrival System consist of the following sections:
-1. ```db```: The db folder contains the cleaned datasets in parquet format and a module used to interact with the compressed files. Parquet format utilizes high level compression algorithms. Pandas now supports parquet format, hence information can be parsed and filtered through using the pandas framework. The ```db/store``` directory consist of three files:
-   1. ```db.parquet``` : This file contains the main cleaned dataset.
+1. ```db```: The db folder contains the cleaned datasets in parquet format and a module used to interact with the compressed files. Parquet format utilizes high level compression algorithms. Pandas supports parquet format, hence information can be parsed and filtered through using the pandas framework. The ```db/store``` directory consist of three files:
+   1. ```db.parquet``` : This file contains the cleaned main dataset.
    2. ```prod_feature_db.parquet```: This file contains the dataframe consisting of the ```drug_name``` feature column and ```drug_information``` column, where ```drug_name``` column acts as a foreign key to db.parquet 
    3. ```related_db.parquet```: This file contains the dataframe consisting of the ```related_drugs``` and the ```related_drugs_url``` columns, where ```related_drugs``` acts as a foreign key to db.parquet
 2. ```pre_trained_storage```: This folder contains the pickled file named ```pre-trained_embedder.pkl```, containing learned embeddings and the pre-trained embedding model.
 3. ```request_handler```: This folder contains the module the handles pre-processing and making sure the request data is in a format that can be accessed easily through out the system.
 4. ```semantic```: This folder contains the module that handles the performing semantic search and return n number of results.
-5. ```utils```: This folder contains utility modules and functinos. These include:
-    1. ```data_embedder.py```: This module is used to propely clean and embed the query.
+5. ```utils```: This folder contains utility modules and functions. These include:
+    1. ```data_embedder.py```: This module is used to properly clean and embed the query.
     2. ```system_security.py```: This module makes sure the request data is in the correct format with expected keys and datatypes.
     3. ```system_settings.py```: This script contains global system configuration variables.
     4. ```system_utils.py```: This script contains other utility functions.
@@ -160,7 +160,7 @@ another example:
     "message": "Information on this query cannot be found in the data store."
     }
    ```
-   This works by calculating the mean score of the number of results returned. It is observed that queries that do not relate to the        information in datastore returns low scores. Hence, a treshold value is set, anything lower than the threshold value is not returned.
+   This works by calculating the mean score of the number of results returned. It is observed that, queries that do not relate to the        information in datastore returns low scores. Hence, a treshold value is set, anything lower than the threshold value is not returned.
 
 2. When users make requests with the incorrect keys and wrong datatypes for the values, the system returns:
    ```
