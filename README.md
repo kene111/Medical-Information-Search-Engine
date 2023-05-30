@@ -5,9 +5,9 @@ The Medical Information Search Engine is an Information Retrival System (I.R.S) 
 quick access to comprehensive information about about drugs. This information includes side effects, drug classes, activity levels, pregnancy categories, etc.
 
 ### THE DATASET:
-The assumption made is, the dataset entails infromation that has been curated over the couple of years. The features of the dataset are drug name, generic names, drug classes, brand names, activity, medical condition description, related drugs, pregnancy categories, 
+The assumption made is, the dataset entails infromation that has been curated over the couple of years. The features of the dataset are drug names, generic names, drug classes, brand names, activity, medical condition description, related drugs, pregnancy categories, 
 Controlled Substances Act (CSA) schedules, ratings, drug link,  number of reviews, alcohol, rx_otc, 
-medical condition url, and crucially, the associated side effects of each drug.
+medical condition url, and crucially, the associated side effects of each drug or group of drugs.
 
 [Dataset Link](https://drive.google.com/file/d/1Jx2alhRYKWiS1krOdL_kndMcYEVFwgm2/view?usp=sharing)
 
