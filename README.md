@@ -108,7 +108,7 @@ The Information Retrival System consist of the following sections:
    3. ```related_db.parquet```: This file contains the dataframe consisting of the ```related_drugs``` and the ```related_drugs_url``` columns, where ```related_drugs``` acts as a foreign key to db.parquet
 2. ```pre_trained_storage```: This folder contains the pickled file named ```pre-trained_embedder.pkl```, containing learned embeddings and the pre-trained embedding model.
 3. ```request_handler```: This folder contains the module the handles pre-processing and making sure the request data is in a format that can be accessed easily through out the system.
-4. ```semantic```: This folder contains the module that handles the performing semantic search and return n number of results.
+4. ```semantic```: This folder contains the module that performs semantic search and returns n number of results.
 5. ```utils```: This folder contains utility modules and functions. These include:
     1. ```data_embedder.py```: This module is used to properly clean and embed the query.
     2. ```system_security.py```: This module makes sure the request data is in the correct format with expected keys and datatypes.
@@ -147,7 +147,7 @@ another example:
 }
 ```
 ##### Request Keys:
-1. The ```query``` key contains an enquiry about a specific drug that can be found in the datastore.
+1. The ```query``` key contains an enquiry about a specific drug or medical condition that can be found in the datastore.
 2. The ```filters``` key contains a list of the specific columns you want information on, if ```filters``` is set to ```"all"```, it returns all the information on that drug.
 3. The ```n_results``` key contains the number of results you want for an enquiry.
 
