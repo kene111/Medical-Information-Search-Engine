@@ -115,6 +115,8 @@ The Information Retrival System consist of the following sections:
     3. ```system_settings.py```: This script contains global system configuration variables.
     4. ```system_utils.py```: This script contains other utility functions.
 7.  ```app.py```: This script runs the entire process.
+### Process Diagram of the System:
+![process_diagram](images/process_diagram.png)
 
 #### HOW TO RUN THE SYSTEM LOCALLY:
 1. Create a virtual environment.
@@ -167,9 +169,9 @@ another example:
     }
    ```
    
-#### API URL LINK : 
+#### API URL: ```https://medical-information-sea-qkbiyb.codecapsules.co.za/drug_system```
 
-#### API REQUEST 
+#### API REQUEST EXAMPLE
 ![api_request](images/query_input.png)
 
 #### API RESULT 
