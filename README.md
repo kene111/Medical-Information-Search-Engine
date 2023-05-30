@@ -94,7 +94,7 @@ Due to constraint of the deadline, I went ahead with the pre-trained model witho
 
 More information can be found in the links provided:
 Phase 1: [Link](https://github.com/kene111/Medical-Information-Search-Engine/blob/main/notebooks/INFORMATION%20RETRIVAL%20LOGIC%20-%20%20PHASE%201.ipynb).
-Phase 2: [Link](https://github.com/kene111/Medical-Information-Search-Engine/blob/main/notebooks/INFORMATION%20RETRIVAL%20LOGIC%20-%20%20PHASE%202.ipynb).
+Phase 2: [Link](https://github.com/kene111/Medical-Information-Search-Engine/blob/main/notebooks/INFORMATION%20RETRIVAL%20LOGIC%20-%20PHASE%202.ipynb).
 
 
 ### Software Development and Productionalization.
