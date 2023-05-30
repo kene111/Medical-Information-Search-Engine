@@ -55,4 +55,4 @@ def drug_system():
     return Response(response=json.dumps(user_results), status=200, mimetype='application/json')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=True, port=5000)
+    app.run(host='0.0.0.0', port=5000)
