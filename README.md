@@ -168,7 +168,7 @@ another example:
     "message": "The request information does not tally with what the system expects, re-check your request data!"
     }
    ```
-   
+#### API URL STATUS: ```INACTIVE```
 #### API URL: ```https://medical-information-sea-qkbiyb.codecapsules.co.za/drug_system```
 
 #### API REQUEST EXAMPLE
