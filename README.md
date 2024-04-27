@@ -11,8 +11,6 @@ medical condition url, and crucially, the associated side effects of each drug o
 
 [Dataset Link](https://drive.google.com/file/d/1Jx2alhRYKWiS1krOdL_kndMcYEVFwgm2/view?usp=sharing)
 
-### DEVELOPMENT TIMELINE:
- 1 WEEK (STRICT DEADLINE)
 
 ### DEVELOPMENT PROCESS ENTAIL:
 1. Data Preprocessing and Feature Engineering.
